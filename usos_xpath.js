@@ -1,9 +1,11 @@
+url('http://quotes.toscrape.com')//pagina en la que se aplicaron las expresiones de xpath
+
 $x('/') // ruta principal
 
-$x('//h1/a/text()').map(x => x.wholeText)//seleciona a texto, el .map convierte a text en el chrome
+$x('//h1/a/text()').map(x => x.wholeText)//seleciona el texto del nodo y lo convierte a texto, el .map convierte el nodo text en el chromeNav
 
-//Usando Expresiones
-$x('//div/span[@class="text"]/text()') //usando expresion osea [corchetes] selecciona todos los de tipo class text
+//Usando Predicados
+$x('//div/span[@class="text"]/text()') //usando predicado osea [corchetes] selecciona todos los de tipo class text
 $x('//span[@class!="text"]')
 
 //Usando operadores
@@ -43,3 +45,10 @@ contains (., “Texto a buscar”) //  Sirve para llamar por el texto contenido 
 
 end-with(.,"")// Termina en.
 matches(.,"")// Sirve para hacer una búsqueda en el texto de un nodo que coincida con una expresión regular.
+
+//Xpath Axes
+
+$x('/html/body/div/self::div')//Elige el mismo nodo
+$x('/html/body/div/child::div')//elige los hijos del nodos
+$x('/html/body/div/descendant::div')// elige los desendientes (osea los hijos de los hijos de los hijos)
+$x('/html/body/div/descendant-or-self::div') // y por supuesto, tambien podemos usar compuertas logicas
